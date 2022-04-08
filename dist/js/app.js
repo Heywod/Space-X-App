@@ -26,7 +26,7 @@ async function getFutureLaunchs() {
     let localDate = newDate.toLocaleDateString();
 
     if (respData.links.patch.large === null) {
-      launchImg = '/dist/img/stock-1.png';
+      launchImg = './img/stock-1.png';
     } else {
       launchImg = respData.links.patch.large;
     }
@@ -120,7 +120,7 @@ async function getPastLaunches() {
     let localDate = newDate.toLocaleDateString();
 
     if (respData.links.patch.large === null) {
-      launchImg = '/dist/img/stock-1.png';
+      launchImg = './img/stock-1.png';
     } else {
       launchImg = respData.links.patch.large;
     }
