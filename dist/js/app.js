@@ -16,14 +16,11 @@ async function getFutureLaunchs() {
     const flight = respData.flight_number;
     const name = respData.name;
     const date = respData.date_local;
-    let launchpadShort = respData.launchpad;
-    let launchpadLong = respData.launchpad;
-    let coreReuse = respData.cores[0].reused;
-    let launchImg = '';
-    let crew = 'No';
-    let details = respData.details;
     let newDate = new Date(date);
     let localDate = newDate.toLocaleDateString();
+    let link = '';
+
+    let launchImg = '';
 
     if (respData.links.patch.large === null) {
       launchImg = './img/stock-1.png';
@@ -31,13 +28,19 @@ async function getFutureLaunchs() {
       launchImg = respData.links.patch.large;
     }
 
+    let crew = 'No';
+
     if (respData.crew != '') {
       crew = 'Yes';
     }
 
+    let details = respData.details;
+
     if (details === null) {
       details = 'No details, sorry.';
     }
+
+    let coreReuse = respData.cores[0].reused;
 
     if (coreReuse === true) {
       coreReuse = 'Yes';
@@ -46,6 +49,8 @@ async function getFutureLaunchs() {
     } else {
       coreReuse = 'N/A';
     }
+
+    let launchpadShort = respData.launchpad;
 
     if (launchpadShort === '5e9d0d95eda69973a809d1ec') {
       launchpadShort = 'Vandenberg, CA';
@@ -59,6 +64,8 @@ async function getFutureLaunchs() {
       launchpadShort = '';
     }
 
+    let launchpadLong = respData.launchpad;
+
     if (launchpadLong === '5e9d0d95eda69973a809d1ec') {
       launchpadLong = 'Vandenberg Space Force Base Space Launch Complex 4E';
     } else if (launchpadLong === '5e9e4501f509094ba4566f84') {
@@ -69,6 +76,12 @@ async function getFutureLaunchs() {
       launchpadLong = 'SpaceX South Texas Launch Site';
     } else {
       launchpadLong = '';
+    }
+
+    let liveStream = respData.links.webcast;
+
+    if (liveStream != null) {
+      link = `<a href='${liveStream}' target='_blank'>Live Stream</a>`;
     }
 
     const launchEl = document.createElement('div');
@@ -89,6 +102,7 @@ async function getFutureLaunchs() {
           <div>Manned Flight - ${crew}</div>
           <div>Core Total Flights - ${coresUse}</div>
           <div>Salvaging Core - ${coreReuse}</div>
+          <div>${link}</div>
           <br />
           <div>Details: ${details}</div>
         </div>
@@ -110,14 +124,10 @@ async function getPastLaunches() {
     const flight = respData.flight_number;
     const name = respData.name;
     const date = respData.date_local;
-    let launchpadShort = respData.launchpad;
-    let launchpadLong = respData.launchpad;
-    let coreReuse = respData.cores[0].reused;
-    let launchImg = '';
-    let crew = 'No';
-    let details = respData.details;
     let newDate = new Date(date);
     let localDate = newDate.toLocaleDateString();
+
+    let launchImg = '';
 
     if (respData.links.patch.large === null) {
       launchImg = './img/stock-1.png';
@@ -125,13 +135,19 @@ async function getPastLaunches() {
       launchImg = respData.links.patch.large;
     }
 
+    let crew = 'No';
+
     if (respData.crew != '') {
       crew = 'Yes';
     }
 
+    let details = respData.details;
+
     if (details === null) {
       details = 'No details, sorry.';
     }
+
+    let coreReuse = respData.cores[0].reused;
 
     if (coreReuse === true) {
       coreReuse = 'Yes';
@@ -140,6 +156,8 @@ async function getPastLaunches() {
     } else {
       coreReuse = 'N/A';
     }
+
+    let launchpadShort = respData.launchpad;
 
     if (launchpadShort === '5e9d0d95eda69973a809d1ec') {
       launchpadShort = 'Vandenberg, CA';
@@ -153,6 +171,8 @@ async function getPastLaunches() {
       launchpadShort = '';
     }
 
+    let launchpadLong = respData.launchpad;
+
     if (launchpadLong === '5e9d0d95eda69973a809d1ec') {
       launchpadLong = 'Vandenberg Space Force Base Space Launch Complex 4E';
     } else if (launchpadLong === '5e9e4501f509094ba4566f84') {
@@ -163,6 +183,12 @@ async function getPastLaunches() {
       launchpadLong = 'SpaceX South Texas Launch Site';
     } else {
       launchpadLong = '';
+    }
+
+    let liveStream = respData.links.webcast;
+
+    if (liveStream != null) {
+      link = `<a href='${liveStream}' target='_blank'>Live Stream</a>`;
     }
 
     const launchEl = document.createElement('div');
@@ -183,6 +209,7 @@ async function getPastLaunches() {
           <div>Manned Flight - ${crew}</div>
           <div>Core Total Flights - ${coresUse}</div>
           <div>Salvaging Core - ${coreReuse}</div>
+          <div>${link}</div>
           <br />
           <div>Details: ${details}</div>
         </div>
