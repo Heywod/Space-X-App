@@ -4,7 +4,7 @@ Website built to easily get information about recent and upcoming SpaceX launche
 
 ## Description
 
-Display uses of HTML5, CSS3, Materialize CSS, Javascript, and REST APIs.
+Display uses of HTML5, CSS3, Materialize CSS, Javascript, SASS, and REST APIs.
 
 ## Information
 
